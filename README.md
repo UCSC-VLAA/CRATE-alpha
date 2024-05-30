@@ -4,7 +4,7 @@ This repo contains official JAX implementation of CRATE-alpha in our paper: [Sca
 
 We propose **CRATE-α**, featuring strategic yet minimal modifications to the sparse coding block in the **CRATE** architecture design, and a light training recipe designed to improve the scalability of **CRATE**.
 
-<p align="center">
+<p align="left">
   <img src="figs/crate-alpha-arch.png" width="1080">
    One layer of the CRATE-α model architecture. 
    <span class="math">MSSA</span> (<strong>M</strong>ulti-head <strong>S</strong>ubspace <strong>S</strong>elf-<strong>A</strong>ttention) represents the compression block, and <tt>ODL</tt> (<strong>O</strong>vercomplete <strong>D</strong>ictionary <strong>L</strong>earning) represents the sparse coding block.
@@ -14,7 +14,7 @@ We propose **CRATE-α**, featuring strategic yet minimal modifications to the sp
 
 ## Comparison of CRATE, CRATE-α, and ViT
 
-<p align="center">
+<p align="left">
   <img src="figs/fig_1_crate_alpha.png" width="1080">
   <i>Left:</i> We demonstrate how modifications to the components enhance the performance of the <b>CRATE</b> model on ImageNet-1K. <i>Right:</i> We compare the FLOPs and accuracy on ImageNet-1K of our methods with ViT <a href="https://arxiv.org/abs/2010.11929">Dosovitskiy et al., 2020</a> and CRATE <a href="https://ma-lab-berkeley.github.io/CRATE/">Yu et al., 2023</a>. CRATE is trained only on ImageNet-1K, while <b>ours</b> and ViT are pre-trained on ImageNet-21K.
 </p>
@@ -22,11 +22,11 @@ We propose **CRATE-α**, featuring strategic yet minimal modifications to the sp
 
 ## Visualize the Improvement of Semantic Interpretability of **CRATE-α**.
 
-<p align="center">
+<p align="left">
   <img src="figs/figure_cutler_segmentation.png" width="1080">
   <strong>Visualization of segmentation on COCO val2017 <a href="https://arxiv.org/abs/1405.0312">Lin et al., 2014</a> with MaskCut <a href="https://arxiv.org/abs/2301.11320">Wang et al., 2023</a>.</strong>  
   <em>Top row</em>: Supervised <strong>ours</strong> effectively identifies the main objects in the image. Compared with <strong>CRATE</strong> (<em>Middle row</em>), <strong>ours</strong> achieves better segmentation performance in terms of boundary.
-  <em>Bottom row</em>: Supervised ViT fails to identify the main objects in most images. We mark failed images with <img src="./figs/red_box.png" alt="Red Box" style="width: 0.05cm;">.
+  <em>Bottom row</em>: Supervised ViT fails to identify the main objects in most images. We warp the failed image in a red box.
 </p>
 
 
