@@ -1,17 +1,18 @@
 # Scaling White-Box Transformers for Vision
 
-This repo contains official JAX implementation of CRATE-alpha in our paper: 
+This repo contains official JAX implementation of CRATE-alpha in our paper: [Scaling White-Box Transformers for Vision]()
 
 We propose **CRATE-α**, featuring strategic yet minimal modifications to the sparse coding block in the **CRATE** architecture design, and a light training recipe designed to improve the scalability of **CRATE**.
 
 <p align="center">
   <img src="figs/crate-alpha-arch.png" width="1080">
-  One layer of the CRATE-α model architecture.
+   One layer of the CRATE-α model architecture. 
+   <span class="math">MSSA</span> (<strong>M</strong>ulti-head <strong>S</strong>ubspace <strong>S</strong>elf-<strong>A</strong>ttention) represents the compression block, and <tt>ODL</tt> (<strong>O</strong>vercomplete <strong>D</strong>ictionary <strong>L</strong>earning) represents the sparse coding block.
 </p>
 
 
 
-## Ablations on How Modifications to the Components Enhance the Performance of **CRATE**.
+## Comparison of CRATE, CRATE-α, and ViT
 
 <p align="center">
   <img src="figs/fig_1_crate_alpha.png" width="1080">
@@ -25,7 +26,7 @@ We propose **CRATE-α**, featuring strategic yet minimal modifications to the sp
   <img src="figs/figure_cutler_segmentation.png" width="1080">
   <strong>Visualization of segmentation on COCO val2017 <a href="https://arxiv.org/abs/1405.0312">Lin et al., 2014</a> with MaskCut <a href="https://arxiv.org/abs/2301.11320">Wang et al., 2023</a>.</strong>  
   <em>Top row</em>: Supervised <strong>ours</strong> effectively identifies the main objects in the image. Compared with <strong>CRATE</strong> (<em>Middle row</em>), <strong>ours</strong> achieves better segmentation performance in terms of boundary.
-  <em>Bottom row</em>: Supervised ViT fails to identify the main objects in most images.
+  <em>Bottom row</em>: Supervised ViT fails to identify the main objects in most images. We mark failed images with <img src="./figs/red_box.png" alt="Red Box" style="width: 0.25cm;">.
 </p>
 
 
@@ -43,7 +44,7 @@ We propose **CRATE-α**, featuring strategic yet minimal modifications to the sp
 
 ## Download Model Weights
 
-You can download model weights from the following link: [Model Weights](https://drive.google.com/drive/folders/1s966XFVY5rS5x0e64NeiQCAhZ6kkamHT?usp=sharing)
+You can download model weights from the following link: [Model Weights](https://huggingface.co/UCSC-VLAA/CRATE-alpha/tree/main/jax)
 
 
 ## TPU Usage and Environment Installation
@@ -105,7 +106,7 @@ bash scripts/clipa/fine_tune.sh
 
 ## PyTorch Inference 
 
-To increase accessibility, we have converted the weights from JAX to PyTorch. We provide models in configurations B/16, L/14, and CRATE-α-CLIPA-L/14.
+To increase accessibility, we have converted the weights from JAX to PyTorch. We provide models in configurations B/16, L/14, CRATE-α-CLIPA-L/14, and CRATE-α-CLIPA-H/14. You can use the PyTorch code to reproduce the results from our paper.
 
 ### Preparing ImageNet-1K Validation Set
 
@@ -116,12 +117,27 @@ wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
 wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_devkit_t12.tar.gz
 ```
 
+###  Dependencies
+
+For the PyTorch environment, the recommended dependencies are as follows:
+
+```
+pip install torch==2.0.0
+pip install torchvision==0.15.0
+pip install transformers==4.40.2
+pip install open-clip-torch==2.24.0
+```
+
+
 ### Reproducing Results on ImageNet-1K with PyTorch 
 
 | Model                     | PyTorch Accuracy | JAX (Paper) Accuracy | PyTorch Weights                           |
 |---------------------------|------------------|---------------------|-------------------------------------------|
-| CRATE-α-B/16              | 81.0             | 81.2                | [Download](https://drive.google.com/file/d/1ndK7yPdN94wF4XDMW0Ld4i8hZpGgKfYV/view?usp=sharing) |
-| CRATE-α-L/14              | 84.0             | 83.9                | [Download](https://drive.google.com/file/d/1oo5RmrnjdMEJjabWGVMJ1znjM33OYlqh/view?usp=sharing) |
+| CRATE-α-B/16              | 81.2             | 81.2                | [Download](https://huggingface.co/UCSC-VLAA/CRATE-alpha/blob/main/torch/crate_alpha_B16.pth) |
+| CRATE-α-L/14              | 83.9             | 83.9                | [Download](https://huggingface.co/UCSC-VLAA/CRATE-alpha/blob/main/torch/crate_alpha_L14.pth) |
+| CRATE-α-CLIPA-L/14              | 69.8             | 69.8                | [Download](https://huggingface.co/UCSC-VLAA/CRATE-alpha/blob/main/torch/crate_alpha_CLIPA_L14.pth) |
+| CRATE-α-CLIPA-H/14              | 72.3             | 72.3                | [Download](https://huggingface.co/UCSC-VLAA/CRATE-alpha/blob/main/torch/crate_alpha_CLIPA_H14.pth) |
+
 
 ### PyTorch Weights
 
@@ -137,10 +153,13 @@ python torch_inference/eval_in1k_cls.py
 
 ### Zero-Shot on ImageNet-1K
 
-(Include instructions or details about zero-shot inference if applicable)
+For the CLIPA PyTorch version, we refer to [CLIP](https://github.com/openai/CLIP).
 
+To run the evaluation code, specify the path to the checkpoints and the ImageNet validation set in the `eval_in1k.py` and `clipa_model.py` files. The default model is CRATE-α-CLIPA-L/14.
 
-
+```bash
+python torch_inference/eval_in1k.py
+```
 
 
 

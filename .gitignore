@@ -1,5 +1,3 @@
-torch_inference/eval_in1k.py
-torch_inference/model/clipa_model.py
 .vscode/
 .idea/
 __pycache__/
