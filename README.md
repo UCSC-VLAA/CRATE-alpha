@@ -26,7 +26,7 @@ We propose **CRATE-α**, featuring strategic yet minimal modifications to the sp
   <img src="figs/figure_cutler_segmentation.png" width="1080">
   <strong>Visualization of segmentation on COCO val2017 <a href="https://arxiv.org/abs/1405.0312">Lin et al., 2014</a> with MaskCut <a href="https://arxiv.org/abs/2301.11320">Wang et al., 2023</a>.</strong>  
   <em>Top row</em>: Supervised <strong>ours</strong> effectively identifies the main objects in the image. Compared with <strong>CRATE</strong> (<em>Middle row</em>), <strong>ours</strong> achieves better segmentation performance in terms of boundary.
-  <em>Bottom row</em>: Supervised ViT fails to identify the main objects in most images. We mark failed images with <img src="./figs/red_box.png" alt="Red Box" style="width: 0.25cm;">.
+  <em>Bottom row</em>: Supervised ViT fails to identify the main objects in most images. We mark failed images with <img src="./figs/red_box.png" alt="Red Box" style="width: 0.05cm;">.
 </p>
 
 
