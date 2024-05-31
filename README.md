@@ -1,6 +1,6 @@
 # Scaling White-Box Transformers for Vision
 
-This repo contains official JAX implementation of CRATE-alpha in our paper: [Scaling White-Box Transformers for Vision]()
+This repo contains official JAX implementation of CRATE-alpha in our paper: [Scaling White-Box Transformers for Vision](https://arxiv.org/abs/2405.20299)
 
 We propose **CRATE-α**, featuring strategic yet minimal modifications to the sparse coding block in the **CRATE** architecture design, and a light training recipe designed to improve the scalability of **CRATE**.
 
@@ -174,7 +174,12 @@ We are also very grateful that this work is supported by a gift from Open Philan
 ## Citation
 
 ```
-
+@article{yang2024cratealpha,
+  title   = {Scaling White-Box Transformers for Vision},
+  author  = {Yang, Jinrui and Li, Xianhang and Pai, Druv and Zhou, Yuyin and Ma, Yi and Yu, Yaodong and Xie, Cihang},
+  journal = {arXiv preprint arXiv:2405.20299},
+  year    = {2024}
+}
 ```
 
 ## Contact
